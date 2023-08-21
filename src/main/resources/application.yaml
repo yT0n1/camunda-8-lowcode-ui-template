@@ -8,17 +8,31 @@ keycloak:
 #  resource: CustomTasklist
 #  public-client: true
 #  principal-attribute: preferred_username
-  
+
+
+#zeebe.client:
+#  broker.gatewayAddress: 127.0.0.1:26500
+#  security.plaintext: true
+#
+#identity.clientId: pouet
+#identity.clientSecret: CSf4Jqwcmw6HsEocpslOvVPjZ4t8DUoP
+#keycloakUrl: http://localhost:18080
+tasklistUrl: x
+operateUrl: x
+
+# https://github.com/camunda-community-hub/spring-zeebe#configuring-camunda-platform-8-saas-connection
+# https://github.com/camunda-community-hub/spring-zeebe#additional-configuration-options
+
+# https://github.com/camunda-community-hub/spring-zeebe#configuring-camunda-platform-8-saas-connection
+# https://github.com/camunda-community-hub/spring-zeebe#additional-configuration-options
 
 zeebe.client:
-  broker.gatewayAddress: 127.0.0.1:26500
-  security.plaintext: true
-  
-identity.clientId: pouet
-identity.clientSecret: CSf4Jqwcmw6HsEocpslOvVPjZ4t8DUoP
-keycloakUrl: http://localhost:18080
-tasklistUrl: http://localhost:8082/
-operateUrl: http://localhost:8081/
+  cloud:
+    region: x
+    clusterId: x
+    clientId: x
+    clientSecret: x
+
 
 # used to build links when sending mails
 baseUrl: http://localhost:8080
@@ -35,15 +49,20 @@ spring:
     max-file-size: 10MB
     max-request-size: 30MB
   datasource:
-    url: jdbc:h2:file:./h2/db
-    driverClassName: org.h2.Driver
+    url: jdbc:h2:file:./h2/db;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9090
+    driver-class-name: org.h2.Driver
     username: sa
     password: password
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
   jpa:
     open-in-view: false
     show-sql: true
     hibernate:
       ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
 server:
   port: 8080
   error:

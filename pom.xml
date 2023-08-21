@@ -37,12 +37,12 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-websocket</artifactId>
     </dependency>
-    
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
-    
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
@@ -51,7 +51,7 @@
 		    <groupId>org.keycloak</groupId>
 		    <artifactId>keycloak-spring-boot-starter</artifactId>
 		</dependency>
-    
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-cache</artifactId>
@@ -104,7 +104,7 @@
       <artifactId>jakarta.mail</artifactId>
       <version>1.6.7</version>
     </dependency>
-    
+
     <!-- css generation with string replacement -->
 	<dependency>
       <groupId>commons-io</groupId>
@@ -116,14 +116,14 @@
       <artifactId>commons-text</artifactId>
       <version>1.10.0</version>
     </dependency>
-    
+
     <!-- find workers to generate elt templates -->
 	<dependency>
       <groupId>org.reflections</groupId>
       <artifactId>reflections</artifactId>
       <version>0.10.2</version>
 	</dependency>
-	
+
     <!-- h2 runtime -->
     <dependency>
       <groupId>com.h2database</groupId>
@@ -137,7 +137,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -255,7 +255,7 @@
             <configuration>
               <outputDirectory>${project.build.directory}</outputDirectory>
               <resources>
-               
+
                 <!-- Copy React index file and manifest -->
                 <resource>
                   <directory>${basedir}/src/main/react/tasklist/build</directory>

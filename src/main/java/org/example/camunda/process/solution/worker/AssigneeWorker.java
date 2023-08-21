@@ -29,4 +29,9 @@ public class AssigneeWorker {
     List<User> usersList = new ArrayList<User>(users);
     return new ProcessVariables().setAssignee1(usersList.get(idx).getUsername());
   }
+
+  @JobWorker(type = "noop")
+  public void noop() {
+    LOG.info("Invoking noop with variables: ");
+  }
 }

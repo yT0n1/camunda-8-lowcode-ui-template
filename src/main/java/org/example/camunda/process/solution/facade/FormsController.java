@@ -92,13 +92,21 @@ public class FormsController extends AbstractController {
   @ResponseBody
   public JsonNode getInstanciationFormSchema(@PathVariable String bpmnProcessId)
       throws IOException {
-    Form form = formService.findByName(bpmnProcessId);
-    ObjectNode schemaModif = (ObjectNode) form.getSchema();
-    schemaModif.put("generator", "formJs");
-    if (form.getGenerator() != null) {
-      schemaModif.put("generator", form.getGenerator());
+
+    try {
+      Form form = formService.findByName(bpmnProcessId);
+      ObjectNode schemaModif = (ObjectNode) form.getSchema();
+      if (schemaModif == null) {
+        return null;
+      }
+      schemaModif.put("generator", "formJs");
+      if (form.getGenerator() != null) {
+        schemaModif.put("generator", form.getGenerator());
+      }
+      return schemaModif;
+    } catch (IOException e) {
+      return null;
     }
-    return schemaModif;
   }
 
   @Override

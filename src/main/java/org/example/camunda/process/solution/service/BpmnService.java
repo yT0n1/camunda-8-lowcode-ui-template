@@ -17,7 +17,7 @@ public class BpmnService {
    * If true, we are getting the schema from TaskList. if false, we try to read the schema from the
    * local BPMN file.
    */
-  @Value("${embeddedForms.fromLocalResources:False}")
+  @Value("${embeddedForms.fromLocalResources:True}")
   private Boolean loadEmbeddedFormsLocally;
 
   @Autowired private OperateService operateService;
@@ -56,6 +56,6 @@ public class BpmnService {
       return BpmnUtils.getProcessNameFromFile(bpmnProcessId + ".bpmn", bpmnProcessId);
     }
     String xml = operateService.getProcessDefinitionXmlByKey(Long.valueOf(processDefinitionId));
-    return BpmnUtils.getTaskNameFromBpmn(xml, bpmnProcessId);
+    return BpmnUtils.getProcessName(xml, bpmnProcessId);
   }
 }

@@ -92,9 +92,10 @@ public class UserTaskWorker {
       task.setTaskState(taskState);
       if (task.getAssignee() != null) {
         simpMessagingTemplate.convertAndSend("/topic/" + task.getAssignee() + "/userTask", task);
-      } else {
-        simpMessagingTemplate.convertAndSend("/topic/userTask", task);
       }
+      //      else {
+      //        simpMessagingTemplate.convertAndSend("/topic/userTask", task);
+      //      }
     } catch (Exception e) {
       LOG.error("Exception occured in UserTaskWorker", e);
       client
